@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AntConfiguration">
+    <buildFile url="file://$PROJECT_DIR$/ant_build_increment.xml">
+      <executeOn event="afterCompilation" target="end" />
+      <executeOn event="beforeCompilation" target="init" />
+    </buildFile>
+  </component>
+</project>

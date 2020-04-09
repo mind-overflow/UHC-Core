@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Spigot Complete Plugin (Debugger, Listener, CommandExecutor):jar">
+    <output-path>D:/Coding/# Server per Test Plugins #/plugins</output-path>
+    <root id="archive" name="UHC-Core.jar">
+      <element id="module-output" name="UHC-Core" />
+    </root>
+  </artifact>
+</component>
