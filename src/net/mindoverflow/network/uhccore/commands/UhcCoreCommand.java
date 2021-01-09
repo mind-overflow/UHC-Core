@@ -4,7 +4,7 @@ import net.mindoverflow.network.uhccore.UhcCore;
 import net.mindoverflow.network.uhccore.commands.uhccommands.*;
 import net.mindoverflow.network.uhccore.utils.Debugger;
 import net.mindoverflow.network.uhccore.utils.MessageUtils;
-import net.mindoverflow.network.uhccore.utils.LocalizedMessages;
+import net.mindoverflow.network.uhccore.utils.configuration.LocalizedMessages;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;

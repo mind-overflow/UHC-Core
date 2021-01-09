@@ -1,4 +1,4 @@
-package net.mindoverflow.network.uhccore.utils;
+package net.mindoverflow.network.uhccore.utils.configuration;
 
 public enum LocalizedMessages {
 

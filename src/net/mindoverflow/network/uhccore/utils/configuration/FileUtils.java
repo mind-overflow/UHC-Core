@@ -1,21 +1,19 @@
-package net.mindoverflow.network.uhccore.utils;
+package net.mindoverflow.network.uhccore.utils.configuration;
 
 import net.mindoverflow.network.uhccore.UhcCore;
 import net.mindoverflow.network.uhccore.listeners.TeamsSelectorGUI;
+import net.mindoverflow.network.uhccore.utils.CommonValues;
+import net.mindoverflow.network.uhccore.utils.Debugger;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import sun.security.krb5.Config;
 
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
 import java.util.logging.Level;
 
 public class FileUtils

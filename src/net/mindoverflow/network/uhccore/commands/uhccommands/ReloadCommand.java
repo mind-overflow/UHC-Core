@@ -1,7 +1,7 @@
 package net.mindoverflow.network.uhccore.commands.uhccommands;
 
 import net.mindoverflow.network.uhccore.utils.Debugger;
-import net.mindoverflow.network.uhccore.utils.FileUtils;
+import net.mindoverflow.network.uhccore.utils.configuration.FileUtils;
 import org.bukkit.command.CommandSender;
 
 import java.util.logging.Level;

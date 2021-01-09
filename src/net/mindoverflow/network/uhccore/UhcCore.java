@@ -4,7 +4,7 @@ import net.mindoverflow.network.uhccore.commands.UhcCoreCommand;
 import net.mindoverflow.network.uhccore.completers.InfoCompleter;
 import net.mindoverflow.network.uhccore.listeners.*;
 import net.mindoverflow.network.uhccore.utils.Debugger;
-import net.mindoverflow.network.uhccore.utils.FileUtils;
+import net.mindoverflow.network.uhccore.utils.configuration.FileUtils;
 import net.mindoverflow.network.uhccore.utils.MessageUtils;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;

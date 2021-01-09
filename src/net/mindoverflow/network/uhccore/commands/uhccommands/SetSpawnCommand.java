@@ -1,8 +1,8 @@
 package net.mindoverflow.network.uhccore.commands.uhccommands;
 
 import net.mindoverflow.network.uhccore.utils.CommonValues;
-import net.mindoverflow.network.uhccore.utils.ConfigEntries;
-import net.mindoverflow.network.uhccore.utils.FileUtils;
+import net.mindoverflow.network.uhccore.utils.configuration.ConfigEntries;
+import net.mindoverflow.network.uhccore.utils.configuration.FileUtils;
 import org.bukkit.Location;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.YamlConfiguration;
