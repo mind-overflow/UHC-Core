@@ -5,6 +5,7 @@ import net.mindoverflow.network.uhccore.utils.CommonValues;
 import net.mindoverflow.network.uhccore.utils.ConfigEntries;
 import net.mindoverflow.network.uhccore.utils.Debugger;
 import net.mindoverflow.network.uhccore.utils.FileUtils;
+import net.mindoverflow.network.uhccore.utils.math.NumberUtils;
 import org.bukkit.*;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -47,9 +48,9 @@ public class StartUhcCommand {
             for(int i = 0; i < CommonValues.totalTeams; i++)
             {
 
-                double x = getRandomNumberInRange(borderX - range + 1, borderX + range - 1) + 0.5;
-                double z = getRandomNumberInRange(borderZ - range + 1, borderZ + range - 1) + 0.5;
-                int y = spawnWorld.getHighestBlockYAt((int) x, (int) z);
+                double x = NumberUtils.getRandomNumberInRange(borderX - range + 1, borderX + range - 1) + 0.5;
+                double z = NumberUtils.getRandomNumberInRange(borderZ - range + 1, borderZ + range - 1) + 0.5;
+                int y = spawnWorld.getHighestBlockYAt((int) x, (int) z); // todo: this method is shit, ushe the one i already implemented in Factions...
 
                 Location loc = new Location(spawnWorld, x, y + 1, z);
 
@@ -117,17 +118,6 @@ public class StartUhcCommand {
                 plugin.getLogger().log(Level.INFO,"UHC Started!");
             });
         });
-    }
-
-
-    private static int getRandomNumberInRange(int min, int max) {
-
-        if (min >= max) {
-            throw new IllegalArgumentException("max must be greater than min");
-        }
-
-        Random r = new Random();
-        return r.nextInt((max - min) + 1) + min;
     }
 
 }
