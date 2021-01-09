@@ -58,6 +58,8 @@ public class CommonValues {
 
     public static int borderX, borderZ, borderSize;
 
+    // todo: move following methods to their separate Utils class; this one is just for caching values...
+
     // Function to check how many players a team has.
     // This function returns the total number of alive teams.
     public static void updatePlayersPerTeam()
@@ -100,7 +102,7 @@ public class CommonValues {
         player.getInventory().setItem(4, CommonValues.teamsItem);
     }
 
-    public static void spawnFirework(UhcCore plugin, Location location, long detonateDelay) {
+    public static void spawnFirework(Location location, long detonateDelay) {
 
         Firework firework = (Firework) location.getWorld().spawnEntity(location, EntityType.FIREWORK);
         FireworkMeta fireworkMeta = firework.getFireworkMeta();
@@ -109,6 +111,8 @@ public class CommonValues {
         fireworkMeta.addEffect(FireworkEffect.builder().withColor(Color.RED).flicker(true).build());
 
         firework.setFireworkMeta(fireworkMeta);
+
+        UhcCore plugin = UhcCore.getInstance();
         plugin.getServer().getScheduler().runTaskLater(plugin, firework::detonate, detonateDelay);
     }
 

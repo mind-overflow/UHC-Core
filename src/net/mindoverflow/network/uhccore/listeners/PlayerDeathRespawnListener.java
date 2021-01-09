@@ -61,7 +61,7 @@ public class PlayerDeathRespawnListener implements Listener
         {
 
             // Spawn a Firework where the player died.
-            CommonValues.spawnFirework(plugin, player.getLocation(), 15L);
+            CommonValues.spawnFirework(player.getLocation(), 15L);
 
             // Load the player name.
             String playerName = player.getName();
@@ -223,7 +223,7 @@ public class PlayerDeathRespawnListener implements Listener
             for(Location loc : CommonValues.fireworksLocations)
                 {
                     debugger.sendDebugMessage(Level.INFO, "FIREWORK LOC: " + loc);
-                    CommonValues.spawnFirework(plugin, loc, 10L);
+                    CommonValues.spawnFirework(loc, 10L);
             }
 
 

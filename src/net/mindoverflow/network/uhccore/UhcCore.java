@@ -21,12 +21,19 @@ public class UhcCore extends JavaPlugin
     public static Logger logger;
     private PluginManager pluginManager;
 
+    private static UhcCore instance;
+
+    public static UhcCore getInstance()
+    { return instance; }
+
     // Method called when the plugin is being loaded.
     @Override
     public void onEnable()
     {
+        instance = this;
 
         // We need to run this in a task, because the plugin has to be initialized AFTER all the worlds are loaded.
+        // todo: after a few months, this sounds like a badly implemented idea
         getServer().getScheduler().runTask(this, ()->
         {
 
