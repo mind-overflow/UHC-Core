@@ -3,6 +3,7 @@ package net.mindoverflow.network.uhccore.listeners;
 import net.mindoverflow.network.uhccore.UhcCore;
 import net.mindoverflow.network.uhccore.utils.CommonValues;
 import net.mindoverflow.network.uhccore.utils.Debugger;
+import net.mindoverflow.network.uhccore.utils.UhcUtils;
 import org.bukkit.*;
 import org.bukkit.entity.Firework;
 import org.bukkit.entity.Player;
@@ -61,7 +62,7 @@ public class PlayerDeathRespawnListener implements Listener
         {
 
             // Spawn a Firework where the player died.
-            CommonValues.spawnFirework(player.getLocation(), 15L);
+            UhcUtils.spawnFirework(player.getLocation(), 15L);
 
             // Load the player name.
             String playerName = player.getName();
@@ -82,7 +83,7 @@ public class PlayerDeathRespawnListener implements Listener
 
             {
                 // Update the total number of players in each team, and the total number of alive teams.
-                CommonValues.updatePlayersPerTeam();
+                UhcUtils.updatePlayersPerTeam();
 
                 // Check how many players are left in the dead player's team.
                 int thisPlayerTeamPlayers = CommonValues.playersPerTeam.get(thisPlayerTeamNumber);
@@ -124,7 +125,7 @@ public class PlayerDeathRespawnListener implements Listener
                         {
                             currentPlayer.teleport(CommonValues.spawn);
                             // Clear his inventory and give him the Teams selector item.
-                            CommonValues.giveTeamsSelectorItem(currentPlayer);
+                            UhcUtils.giveTeamsSelectorItem(currentPlayer);
                             plugin.getLogger().log(Level.INFO,"UHC Finished!");
                             currentPlayer.sendTitle("Team " + teamName + " Vincitore!", "", 20 * 2, 20 * 10, 20 * 2);
 
@@ -175,7 +176,7 @@ public class PlayerDeathRespawnListener implements Listener
                 {
                     plugin.getServer().getScheduler().runTaskLater(plugin, () ->
                     {
-                        CommonValues.tpSpawnAndGiveItem(player);
+                        UhcUtils.tpSpawnAndGiveItem(player);
                     }, 10L);
                 }
 
@@ -188,7 +189,7 @@ public class PlayerDeathRespawnListener implements Listener
 
             plugin.getServer().getScheduler().runTaskLater(plugin, () ->
             {
-                CommonValues.tpSpawnAndGiveItem(player);
+                UhcUtils.tpSpawnAndGiveItem(player);
             }, 10L);
         }
 
@@ -223,7 +224,7 @@ public class PlayerDeathRespawnListener implements Listener
             for(Location loc : CommonValues.fireworksLocations)
                 {
                     debugger.sendDebugMessage(Level.INFO, "FIREWORK LOC: " + loc);
-                    CommonValues.spawnFirework(loc, 10L);
+                    UhcUtils.spawnFirework(loc, 10L);
             }
 
 

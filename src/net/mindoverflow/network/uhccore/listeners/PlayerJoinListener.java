@@ -2,6 +2,7 @@ package net.mindoverflow.network.uhccore.listeners;
 
 import net.mindoverflow.network.uhccore.utils.CommonValues;
 import net.mindoverflow.network.uhccore.utils.Debugger;
+import net.mindoverflow.network.uhccore.utils.UhcUtils;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -29,7 +30,7 @@ public class PlayerJoinListener implements Listener
 
         if(!(CommonValues.playerTeam.containsKey(player.getName())))
         {
-            CommonValues.tpSpawnAndGiveItem(player);
+            UhcUtils.tpSpawnAndGiveItem(player);
         }
 
 

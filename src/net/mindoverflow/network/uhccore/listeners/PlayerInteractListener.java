@@ -2,6 +2,7 @@ package net.mindoverflow.network.uhccore.listeners;
 
 
 import net.mindoverflow.network.uhccore.utils.CommonValues;
+import net.mindoverflow.network.uhccore.utils.UhcUtils;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -74,7 +75,7 @@ public class PlayerInteractListener implements Listener
                 CommonValues.playerTeam.put(player.getName(), teamNumber);
 
                 // Update the total number of players in each team, and the total number of alive teams.
-                CommonValues.updatePlayersPerTeam();
+                UhcUtils.updatePlayersPerTeam();
 
                 // Tell the player he has joined a team.
                 player.sendMessage("§7Aggiunto al team " + im.getDisplayName());
@@ -90,7 +91,7 @@ public class PlayerInteractListener implements Listener
                     CommonValues.playerTeam.remove(player.getName());
 
                     // Update the total number of players in each team, and the total number of alive teams.
-                    CommonValues.updatePlayersPerTeam();
+                    UhcUtils.updatePlayersPerTeam();
                 } else
                 {
                     player.sendMessage("§cIn nessun team!");
