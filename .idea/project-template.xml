@@ -1,3 +1,0 @@
-<template>
-  <input-field default="net.mindoverflow.pluginpackage">IJ_BASE_PACKAGE</input-field>
-</template>
