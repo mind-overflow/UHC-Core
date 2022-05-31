@@ -1,0 +1,9 @@
+name: UHC-Core
+version: 0.0.136
+author: mind_overflow
+api-version: '1.15'
+main: net.mindoverflow.network.uhccore.UhcCore
+commands:
+  uhc:
+    description: UHC-Core base command.
+    usage: /uhc
