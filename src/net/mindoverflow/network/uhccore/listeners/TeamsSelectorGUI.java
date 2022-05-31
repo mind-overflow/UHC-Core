@@ -1,14 +1,12 @@
 package net.mindoverflow.network.uhccore.listeners;
 
-import net.mindoverflow.network.uhccore.utils.CommonValues;
+import net.mindoverflow.network.uhccore.utils.Cache;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-
-import java.util.LinkedHashMap;
 
 public class TeamsSelectorGUI implements InventoryHolder
 {
@@ -28,15 +26,15 @@ public class TeamsSelectorGUI implements InventoryHolder
     public void initializeInv()
     {
 
-        for(int i = 0; i < CommonValues.totalTeams; i++)
+        for(int i = 0; i < Cache.totalTeams; i++)
         {
-            String teamName = CommonValues.teamNames.get(i);
-            Material itemMat = CommonValues.teamItemsMaterials.get(i);
+            String teamName = Cache.teamNames.get(i);
+            Material itemMat = Cache.teamItemsMaterials.get(i);
             inv.setItem(i, createItem(teamName, itemMat));
         }
 
 
-        inv.setItem(17, CommonValues.quitTeamItem);
+        inv.setItem(17, Cache.quitTeamItem);
 
     }
 

@@ -2,7 +2,7 @@ package net.mindoverflow.network.uhccore.utils.configuration;
 
 import net.mindoverflow.network.uhccore.UhcCore;
 import net.mindoverflow.network.uhccore.listeners.TeamsSelectorGUI;
-import net.mindoverflow.network.uhccore.utils.CommonValues;
+import net.mindoverflow.network.uhccore.utils.Cache;
 import net.mindoverflow.network.uhccore.utils.Debugger;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -59,46 +59,46 @@ public class FileUtils
         FileType.CONFIG_YAML.yaml = YamlConfiguration.loadConfiguration(FileType.CONFIG_YAML.file);
         FileType.LANG_YAML.yaml = YamlConfiguration.loadConfiguration(FileType.LANG_YAML.file);
 
-        CommonValues.playerTeam.clear();
-        CommonValues.playersPerTeam.clear();
-        CommonValues.teamNames.clear();
-        CommonValues.teamItemsMaterials.clear();
-        CommonValues.spawn = null;
-        CommonValues.fireworksLocations.clear();
+        Cache.playerTeam.clear();
+        Cache.playersPerTeam.clear();
+        Cache.teamNames.clear();
+        Cache.teamItemsMaterials.clear();
+        Cache.spawn = null;
+        Cache.fireworksLocations.clear();
 
-        CommonValues.playingTeams = 0;
+        Cache.playingTeams = 0;
 
         YamlConfiguration config = FileType.CONFIG_YAML.yaml;
 
-        CommonValues.teamNames = config.getStringList(ConfigEntries.TEAMS_NAMES.path);
+        Cache.teamNames = config.getStringList(ConfigEntries.TEAMS_NAMES.path);
         for(String matName : config.getStringList(ConfigEntries.TEAMS_ITEMS.path))
         {
-            CommonValues.teamItemsMaterials.add(Material.valueOf(matName));
+            Cache.teamItemsMaterials.add(Material.valueOf(matName));
         }
 
-        CommonValues.uhcWorlds = config.getStringList(ConfigEntries.UHC_WORLDS.path);
-        CommonValues.lobbyWorlds = config.getStringList(ConfigEntries.LOBBY_WORLDS.path);
+        Cache.uhcWorlds = config.getStringList(ConfigEntries.UHC_WORLDS.path);
+        Cache.lobbyWorlds = config.getStringList(ConfigEntries.LOBBY_WORLDS.path);
 
-        CommonValues.friendlyFire = config.getBoolean(ConfigEntries.FRIENDLY_FIRE.path);
+        Cache.friendlyFire = config.getBoolean(ConfigEntries.FRIENDLY_FIRE.path);
 
-        CommonValues.teamsItem = new ItemStack(Material.NETHER_STAR);
-        ItemMeta im = CommonValues.teamsItem.getItemMeta();
+        Cache.teamsItem = new ItemStack(Material.NETHER_STAR);
+        ItemMeta im = Cache.teamsItem.getItemMeta();
         im.setDisplayName("§eTeam");
-        CommonValues.teamsItem.setItemMeta(im);
+        Cache.teamsItem.setItemMeta(im);
 
-        CommonValues.quitTeamItem = new ItemStack(Material.BARRIER);
-        im = CommonValues.quitTeamItem.getItemMeta();
+        Cache.quitTeamItem = new ItemStack(Material.BARRIER);
+        im = Cache.quitTeamItem.getItemMeta();
         im.setDisplayName("§cEsci dal Team");
-        CommonValues.quitTeamItem.setItemMeta(im);
+        Cache.quitTeamItem.setItemMeta(im);
 
-        CommonValues.totalTeams = config.getInt(ConfigEntries.TEAMS_NUMBER.path);
+        Cache.totalTeams = config.getInt(ConfigEntries.TEAMS_NUMBER.path);
 
-        CommonValues.teamsSelectorGUI = new TeamsSelectorGUI();
-        CommonValues.teamsSelectorGUI.initializeInv();
+        Cache.teamsSelectorGUI = new TeamsSelectorGUI();
+        Cache.teamsSelectorGUI.initializeInv();
 
-        CommonValues.borderX = config.getInt(ConfigEntries.BORDER_CENTER_X.path);
-        CommonValues.borderZ = config.getInt(ConfigEntries.BORDER_CENTER_Z.path);
-        CommonValues.borderSize = config.getInt(ConfigEntries.BORDER_SIZE.path);
+        Cache.borderX = config.getInt(ConfigEntries.BORDER_CENTER_X.path);
+        Cache.borderZ = config.getInt(ConfigEntries.BORDER_CENTER_Z.path);
+        Cache.borderSize = config.getInt(ConfigEntries.BORDER_SIZE.path);
 
         String spawnWorldName = config.getString(ConfigEntries.SPAWN_WORLD.path);
         if(spawnWorldName != null)
@@ -112,7 +112,7 @@ public class FileUtils
             double z = config.getDouble(ConfigEntries.SPAWN_Z.path);
             double yaw = config.getDouble(ConfigEntries.SPAWN_YAW.path);
             double pitch = config.getDouble(ConfigEntries.SPAWN_PITCH.path);
-            CommonValues.spawn = new Location(spawnWorld, x, y, z, (float) yaw, (float) pitch);
+            Cache.spawn = new Location(spawnWorld, x, y, z, (float) yaw, (float) pitch);
             }
         }
 
@@ -124,7 +124,7 @@ public class FileUtils
             double y = config.getDouble(currentPath + ".y");
             double z = config.getDouble(currentPath + ".z");
 
-            CommonValues.fireworksLocations.add(new Location(plugin.getServer().getWorld(world), x, y, z));
+            Cache.fireworksLocations.add(new Location(plugin.getServer().getWorld(world), x, y, z));
         }
 
     }

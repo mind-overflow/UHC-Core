@@ -1,7 +1,7 @@
 package net.mindoverflow.network.uhccore.listeners;
 
 import net.mindoverflow.network.uhccore.UhcCore;
-import net.mindoverflow.network.uhccore.utils.CommonValues;
+import net.mindoverflow.network.uhccore.utils.Cache;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -28,11 +28,11 @@ public class PlayerChatListener implements Listener {
         String message;
 
         // Check if the player is in a team.
-        if(CommonValues.playerTeam.containsKey(playerName))
+        if(Cache.playerTeam.containsKey(playerName))
         {
             // Load the team number and the team name from that.
-            int teamNumber = CommonValues.playerTeam.get(playerName);
-            String teamName = CommonValues.teamNames.get(teamNumber);
+            int teamNumber = Cache.playerTeam.get(playerName);
+            String teamName = Cache.teamNames.get(teamNumber);
 
             // Build the chat message.
             message = "§7[" + teamName + "§7] §f" + displayName + "§7: " + event.getMessage();

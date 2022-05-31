@@ -19,16 +19,16 @@ public class UhcUtils {
         int playingTeams = 0;
 
         // Iterate through every existing team.
-        for(int i = 0; i < CommonValues.totalTeams; i++)
+        for(int i = 0; i < Cache.totalTeams; i++)
         {
             // Int to store the players number for each team.
             int playersNumber = 0;
 
             // Iterate through every player and...
-            for(String s : CommonValues.playerTeam.keySet())
+            for(String s : Cache.playerTeam.keySet())
             {
                 //if his team is the current checked one...
-                if(CommonValues.playerTeam.get(s) == i)
+                if(Cache.playerTeam.get(s) == i)
                 {
                     //increase the playersNumber by 1.
                     playersNumber++;
@@ -36,21 +36,21 @@ public class UhcUtils {
             }
 
             // Finally, put the team number and his player count in the playersPerTeam HashMap.
-             CommonValues.playersPerTeam.put(i, playersNumber);
+             Cache.playersPerTeam.put(i, playersNumber);
 
             // If there is at least 1 player in this team, then count this as an "alive team".
             if(playersNumber != 0) playingTeams++;
         }
 
         // Return the number of alive teams.
-        CommonValues.playingTeams = playingTeams;
+        Cache.playingTeams = playingTeams;
     }
 
     public static void giveTeamsSelectorItem(Player player)
     {
 
         player.getInventory().clear();
-        player.getInventory().setItem(4, CommonValues.teamsItem);
+        player.getInventory().setItem(4, Cache.teamsItem);
     }
 
     public static void spawnFirework(Location location, long detonateDelay) {
@@ -70,7 +70,7 @@ public class UhcUtils {
     public static void tpSpawnAndGiveItem(Player player)
     {
 
-        player.teleport(CommonValues.spawn);
+        player.teleport(Cache.spawn);
 
         // Clear the player's inventory and give hims the Teams selector item.
         UhcUtils.giveTeamsSelectorItem(player);

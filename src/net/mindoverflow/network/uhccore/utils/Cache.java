@@ -1,22 +1,15 @@
 package net.mindoverflow.network.uhccore.utils;
 
-import net.mindoverflow.network.uhccore.UhcCore;
 import net.mindoverflow.network.uhccore.listeners.TeamsSelectorGUI;
-import org.bukkit.Color;
-import org.bukkit.FireworkEffect;
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.entity.EntityType;
-import org.bukkit.entity.Firework;
-import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.FireworkMeta;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class CommonValues {
+public class Cache {
 
     // Values to save the uhc and lobby world names.
     public static List<String> uhcWorlds = new ArrayList<>(), lobbyWorlds = new ArrayList<>();

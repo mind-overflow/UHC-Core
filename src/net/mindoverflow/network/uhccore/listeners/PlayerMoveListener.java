@@ -1,16 +1,10 @@
 package net.mindoverflow.network.uhccore.listeners;
 
 import net.mindoverflow.network.uhccore.UhcCore;
-import net.mindoverflow.network.uhccore.utils.CommonValues;
-import net.mindoverflow.network.uhccore.utils.Debugger;
-import org.bukkit.Location;
-import org.bukkit.entity.Player;
+import net.mindoverflow.network.uhccore.utils.Cache;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerMoveEvent;
-import org.bukkit.scheduler.BukkitTask;
-
-import java.util.logging.Level;
 
 public class PlayerMoveListener implements Listener
 {
@@ -26,7 +20,7 @@ public class PlayerMoveListener implements Listener
     @EventHandler
     public void onPlayerMove(PlayerMoveEvent event)
     {
-        if(CommonValues.allowMovement) return;
+        if(Cache.allowMovement) return;
         event.setCancelled(true);
     }
 }

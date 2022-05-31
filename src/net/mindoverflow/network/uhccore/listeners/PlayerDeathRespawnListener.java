@@ -1,7 +1,7 @@
 package net.mindoverflow.network.uhccore.listeners;
 
 import net.mindoverflow.network.uhccore.UhcCore;
-import net.mindoverflow.network.uhccore.utils.CommonValues;
+import net.mindoverflow.network.uhccore.utils.Cache;
 import net.mindoverflow.network.uhccore.utils.Debugger;
 import net.mindoverflow.network.uhccore.utils.UhcUtils;
 import org.bukkit.*;
@@ -44,10 +44,10 @@ public class PlayerDeathRespawnListener implements Listener
         Player player = event.getEntity();
 
         // Remove the Teams selector item from the drops.
-        event.getDrops().remove(CommonValues.teamsItem);
+        event.getDrops().remove(Cache.teamsItem);
 
         // Check if the player died in the lobby...
-        if(CommonValues.lobbyWorlds.contains(player.getWorld().getName()))
+        if(Cache.lobbyWorlds.contains(player.getWorld().getName()))
         {
             // And clear all drops.
             event.getDrops().clear();
@@ -58,7 +58,7 @@ public class PlayerDeathRespawnListener implements Listener
         // check if the death world is a UHC world (we don't want this to happen in the lobby!)
         // and
         // check if the player is in any team (players who are not in a team are not playing!)
-        if((CommonValues.uhcWorlds.contains(player.getWorld().getName())) && CommonValues.playerTeam.containsKey(player.getName()))
+        if((Cache.uhcWorlds.contains(player.getWorld().getName())) && Cache.playerTeam.containsKey(player.getName()))
         {
 
             // Spawn a Firework where the player died.
@@ -71,11 +71,11 @@ public class PlayerDeathRespawnListener implements Listener
             deadPlayers.put(playerName, player.getLocation());
 
             // Load the dead player's team number.
-            int thisPlayerTeamNumber = CommonValues.playerTeam.get(playerName);
+            int thisPlayerTeamNumber = Cache.playerTeam.get(playerName);
             // Load the death player's team name.
-            String thisPlayerTeamName = CommonValues.teamNames.get(thisPlayerTeamNumber);
+            String thisPlayerTeamName = Cache.teamNames.get(thisPlayerTeamNumber);
             // Remove the player from his team.
-            CommonValues.playerTeam.remove(playerName);
+            Cache.playerTeam.remove(playerName);
 
 
             // Run this task Async, because it may be CPU heavy.
@@ -86,44 +86,44 @@ public class PlayerDeathRespawnListener implements Listener
                 UhcUtils.updatePlayersPerTeam();
 
                 // Check how many players are left in the dead player's team.
-                int thisPlayerTeamPlayers = CommonValues.playersPerTeam.get(thisPlayerTeamNumber);
+                int thisPlayerTeamPlayers = Cache.playersPerTeam.get(thisPlayerTeamNumber);
 
                 // Run this task Sync, because we need to access the API, and also delay it by 1 second.
                 plugin.getServer().getScheduler().runTaskLater(plugin, () ->
                 {
 
-                    int playingPlayers = CommonValues.playerTeam.size();
+                    int playingPlayers = Cache.playerTeam.size();
                     for(Player p : plugin.getServer().getOnlinePlayers())
                     {
                         p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1, 1);
                     }
                     plugin.getServer().broadcastMessage(playerName + "§7 del team §e" + thisPlayerTeamName + "§7 è fuori gioco!");
                     plugin.getServer().broadcastMessage("§7Nel team " + thisPlayerTeamName + "§7 rimangono §e" + thisPlayerTeamPlayers + "§7 giocatori.");
-                    plugin.getServer().broadcastMessage("§7In totale rimangono §e" + playingPlayers + "§7 giocatori, in §e" + CommonValues.playingTeams + "§7 team.");
+                    plugin.getServer().broadcastMessage("§7In totale rimangono §e" + playingPlayers + "§7 giocatori, in §e" + Cache.playingTeams + "§7 team.");
 
-                    if(CommonValues.playingTeams <= 1)
+                    if(Cache.playingTeams <= 1)
                     {
-                        CommonValues.allowMovement = false;
+                        Cache.allowMovement = false;
                         scheduleTask();
                         plugin.getServer().broadcastMessage("§6La UHC è finita!");
 
                         int winningTeam = 0;
-                        for(int i = 0; i < CommonValues.totalTeams; i++)
+                        for(int i = 0; i < Cache.totalTeams; i++)
                         {
-                            if(CommonValues.playersPerTeam.get(i) > 0)
+                            if(Cache.playersPerTeam.get(i) > 0)
                             {
                                 winningTeam = i;
                             }
                         }
 
-                        String teamName = CommonValues.teamNames.get(winningTeam) + "§r";
+                        String teamName = Cache.teamNames.get(winningTeam) + "§r";
                         plugin.getServer().broadcastMessage("§6Ha vinto il team: " + teamName);
 
 
 
                         for(Player currentPlayer : plugin.getServer().getOnlinePlayers())
                         {
-                            currentPlayer.teleport(CommonValues.spawn);
+                            currentPlayer.teleport(Cache.spawn);
                             // Clear his inventory and give him the Teams selector item.
                             UhcUtils.giveTeamsSelectorItem(currentPlayer);
                             plugin.getLogger().log(Level.INFO,"UHC Finished!");
@@ -159,7 +159,7 @@ public class PlayerDeathRespawnListener implements Listener
 
                 // Check if there is more than 1 team alive.
                 // If there is only 1 team alive, then the UHC is over.
-                if(CommonValues.playingTeams > 1)
+                if(Cache.playingTeams > 1)
                 {
                     // warn the player that he's not a spectator.
                     player.sendMessage("§cSei morto nella UHC e ora sei uno spettatore!");
@@ -221,7 +221,7 @@ public class PlayerDeathRespawnListener implements Listener
                 taskID = 0;
             }
 
-            for(Location loc : CommonValues.fireworksLocations)
+            for(Location loc : Cache.fireworksLocations)
                 {
                     debugger.sendDebugMessage(Level.INFO, "FIREWORK LOC: " + loc);
                     UhcUtils.spawnFirework(loc, 10L);
@@ -236,7 +236,7 @@ public class PlayerDeathRespawnListener implements Listener
         plugin.getServer().getScheduler().runTaskLater(plugin, ()->
         {
             isTaskScheduled = false;
-            CommonValues.allowMovement = true;
+            Cache.allowMovement = true;
 
             for (Player currentPlayer : plugin.getServer().getOnlinePlayers())
             {

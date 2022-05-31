@@ -1,6 +1,6 @@
 package net.mindoverflow.network.uhccore.commands.uhccommands;
 
-import net.mindoverflow.network.uhccore.utils.CommonValues;
+import net.mindoverflow.network.uhccore.utils.Cache;
 import net.mindoverflow.network.uhccore.utils.configuration.ConfigEntries;
 import net.mindoverflow.network.uhccore.utils.configuration.FileUtils;
 import org.bukkit.Location;
@@ -16,7 +16,7 @@ public class SetSpawnCommand
         Player player = (Player) sender;
         Location playerLoc = player.getLocation();
 
-        CommonValues.spawn = playerLoc;
+        Cache.spawn = playerLoc;
         YamlConfiguration config = FileUtils.FileType.CONFIG_YAML.yaml;
         config.set(ConfigEntries.SPAWN_WORLD.path, playerLoc.getWorld().getName());
         config.set(ConfigEntries.SPAWN_X.path, playerLoc.getX());

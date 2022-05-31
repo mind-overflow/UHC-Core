@@ -1,7 +1,7 @@
 package net.mindoverflow.network.uhccore.commands.uhccommands;
 
 import net.mindoverflow.network.uhccore.UhcCore;
-import net.mindoverflow.network.uhccore.utils.CommonValues;
+import net.mindoverflow.network.uhccore.utils.Cache;
 import net.mindoverflow.network.uhccore.utils.Debugger;
 import net.mindoverflow.network.uhccore.utils.math.NumberUtils;
 import org.bukkit.*;
@@ -23,17 +23,17 @@ public class StartUhcCommand {
 
         HashMap<Integer, Location> spawnPerTeam = new HashMap<>();
 
-        World spawnWorld = plugin.getServer().getWorld(CommonValues.uhcWorlds.get(0));
+        World spawnWorld = plugin.getServer().getWorld(Cache.uhcWorlds.get(0));
 
-        int borderX = CommonValues.borderX;
-        int borderZ = CommonValues.borderZ;
-        int borderSize = CommonValues.borderSize;
+        int borderX = Cache.borderX;
+        int borderZ = Cache.borderZ;
+        int borderSize = Cache.borderSize;
         int range = borderSize / 2;
 
         Location borderCenter = new Location(spawnWorld, borderX, 64, borderZ);
 
 
-        for(String playerName : CommonValues.playerTeam.keySet())
+        for(String playerName : Cache.playerTeam.keySet())
         {
             Player player = plugin.getServer().getPlayer(playerName);
             player.sendTitle("La §dUHC§r inizierà a breve!", "ricerca degli spawnpoint...", 20, 70, 10);
@@ -42,7 +42,7 @@ public class StartUhcCommand {
 
         plugin.getServer().getScheduler().runTaskAsynchronously(plugin, ()->
         {
-            for(int i = 0; i < CommonValues.totalTeams; i++)
+            for(int i = 0; i < Cache.totalTeams; i++)
             {
 
                 double x = NumberUtils.getRandomNumberInRange(borderX - range + 1, borderX + range - 1) + 0.5;
@@ -67,18 +67,18 @@ public class StartUhcCommand {
             }
             plugin.getServer().getScheduler().runTaskLaterAsynchronously(plugin, ()->
             {
-                CommonValues.allowMovement = false;
+                Cache.allowMovement = false;
             }, 20L);
 
             plugin.getServer().getScheduler().runTaskLaterAsynchronously(plugin, ()->
             {
-                CommonValues.allowMovement = true;
+                Cache.allowMovement = true;
             }, loadDelay * 20L);
 
 
-            for(String playerName : CommonValues.playerTeam.keySet())
+            for(String playerName : Cache.playerTeam.keySet())
             {
-                int teamNumber = CommonValues.playerTeam.get(playerName);
+                int teamNumber = Cache.playerTeam.get(playerName);
 
                 Player player = plugin.getServer().getPlayer(playerName);
                 Location hisTeamLoc = spawnPerTeam.get(teamNumber);

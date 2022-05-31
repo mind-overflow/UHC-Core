@@ -1,6 +1,6 @@
 package net.mindoverflow.network.uhccore.commands.uhccommands;
 
-import net.mindoverflow.network.uhccore.utils.CommonValues;
+import net.mindoverflow.network.uhccore.utils.Cache;
 import net.mindoverflow.network.uhccore.utils.configuration.ConfigEntries;
 import net.mindoverflow.network.uhccore.utils.Debugger;
 import net.mindoverflow.network.uhccore.utils.configuration.FileUtils;
@@ -23,17 +23,17 @@ public class SetFireworkCommand
 
         YamlConfiguration config = FileUtils.FileType.CONFIG_YAML.yaml;
 
-        int listPos = CommonValues.fireworksLocations.size() + 1;
+        int listPos = Cache.fireworksLocations.size() + 1;
 
-        if(CommonValues.fireworksLocations.get(0).getWorld() == null)
+        if(Cache.fireworksLocations.get(0).getWorld() == null)
         {
             debugger.sendDebugMessage(Level.SEVERE, "WORLD IS NULL!");
             listPos = 1;
-            CommonValues.fireworksLocations.set(0, fireworkLoc);
+            Cache.fireworksLocations.set(0, fireworkLoc);
         }
         else
         {
-            CommonValues.fireworksLocations.add(fireworkLoc);
+            Cache.fireworksLocations.add(fireworkLoc);
         }
 
         String currentPath = ConfigEntries.FIREWORK_POS.path + "." + listPos;

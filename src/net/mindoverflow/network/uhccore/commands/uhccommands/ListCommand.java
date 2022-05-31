@@ -1,6 +1,6 @@
 package net.mindoverflow.network.uhccore.commands.uhccommands;
 
-import net.mindoverflow.network.uhccore.utils.CommonValues;
+import net.mindoverflow.network.uhccore.utils.Cache;
 import org.bukkit.command.CommandSender;
 
 import java.util.ArrayList;
@@ -12,12 +12,12 @@ public class ListCommand
     {
 
         HashMap<Integer, ArrayList<String>>playersPerTeam = new HashMap<>();
-        for(int i = 0; i < CommonValues.totalTeams; i++)
+        for(int i = 0; i < Cache.totalTeams; i++)
         {
             ArrayList<String>playersInThisTeam = new ArrayList<>();
-            for(String playerName : CommonValues.playerTeam.keySet())
+            for(String playerName : Cache.playerTeam.keySet())
             {
-                if(CommonValues.playerTeam.get(playerName).equals(i))
+                if(Cache.playerTeam.get(playerName).equals(i))
                 {
                     playersInThisTeam.add(playerName);
                 }
@@ -28,7 +28,7 @@ public class ListCommand
         commandSender.sendMessage("§6-------[ UHC: Lista Team ]-------");
         for(Integer i : playersPerTeam.keySet())
         {
-            String teamName = CommonValues.teamNames.get(i);
+            String teamName = Cache.teamNames.get(i);
             int playersInThisTeam = playersPerTeam.get(i).size();
             ArrayList<String>playersNames = playersPerTeam.get(i);
             String playersList = playersNames.toString().replace("[", "").replace("]", "").replace(",", "§7,§r");
