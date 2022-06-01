@@ -1,12 +1,13 @@
 kind: pipeline
 name: default
 
+trigger:
+  branch:
+    - master
+
 steps:
   - name: build
     image: maven:3-eclipse-temurin-17
     commands:
       - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
       - mvn test -B
-    when:
-      branch:
-        - main
