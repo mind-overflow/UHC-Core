@@ -34,6 +34,7 @@ public class UhcCore extends JavaPlugin
 
         // We need to run this in a task, because the plugin has to be initialized AFTER all the worlds are loaded.
         // todo: after a few months, this sounds like a badly implemented idea
+        // ^ i agree, why the hell is this happening?
         getServer().getScheduler().runTask(this, ()->
         {
 
