@@ -127,6 +127,9 @@ public class FileUtils
             Cache.fireworksLocations.add(new Location(plugin.getServer().getWorld(world), x, y, z));
         }
 
+        // after reloading everything, check if the server is ready for gameplay.
+        Cache.isServerReady = isServerSetUp();
+
     }
 
     // Only reload the needed File.
@@ -281,5 +284,16 @@ public class FileUtils
             file = givenFile;
             yaml = yamlConfig;
         }
+    }
+
+    private static boolean isServerSetUp() {
+
+        if(Cache.spawn == null) return false;
+        if(Cache.lobbyWorlds == null || Cache.lobbyWorlds.isEmpty()) return false;
+        if(Cache.totalTeams <= 1) return false;
+        if(Cache.fireworksLocations == null) return false;
+        if(Cache.uhcWorlds == null || Cache.uhcWorlds.isEmpty()) return false;
+
+        return false;
     }
 }

@@ -70,7 +70,7 @@ public class UhcUtils {
 
     public static void tpSpawnAndGiveItem(Player player)
     {
-        if(Cache.spawn == null)
+        if(Cache.isServerReady)
         {
             MessageUtils.sendLocalizedMessage(player, LocalizedMessage.ERROR_SERVER_NOT_SET_UP);
             return;
