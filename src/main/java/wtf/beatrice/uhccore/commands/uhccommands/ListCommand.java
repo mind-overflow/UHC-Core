@@ -5,6 +5,7 @@ import org.bukkit.command.CommandSender;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class ListCommand
 {
@@ -25,12 +26,12 @@ public class ListCommand
             playersPerTeam.put(i, playersInThisTeam);
         }
 
-        commandSender.sendMessage("§6-------[ UHC: Lista Team ]-------");
+        commandSender.sendMessage("§6-------[ UHC: Team List ]-------");
         for(Integer i : playersPerTeam.keySet())
         {
             String teamName = Cache.teamNames.get(i);
             int playersInThisTeam = playersPerTeam.get(i).size();
-            ArrayList<String>playersNames = playersPerTeam.get(i);
+            List<String> playersNames = playersPerTeam.get(i);
             String playersList = playersNames.toString().replace("[", "").replace("]", "").replace(",", "§7,§r");
             commandSender.sendMessage("" + teamName + " §7(§f" + playersInThisTeam + "§7): §f" + playersList);
         }
