@@ -36,9 +36,15 @@ public class MessageUtils
             sender = plugin.getServer().getPlayer(senderName);
         }
 
+        sendLocalizedMessage(sender, messageEnum);
+    }
+
+    public static void sendLocalizedMessage(CommandSender sender, LocalizedMessages messageEnum)
+    {
+
         // If we actually have a sender, send it the message and color it!
         if(sender != null) sender.sendMessage(getLocalizedMessage(messageEnum, true));
-        // If the sender is null, report it to the debugger.
+            // If the sender is null, report it to the debugger.
         else debugger.sendDebugMessage(Level.SEVERE, "Sender is null!");
     }
 

@@ -8,6 +8,7 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Firework;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.meta.FireworkMeta;
+import wtf.beatrice.uhccore.utils.configuration.LocalizedMessages;
 
 public class UhcUtils {
 
@@ -69,6 +70,12 @@ public class UhcUtils {
 
     public static void tpSpawnAndGiveItem(Player player)
     {
+        if(Cache.spawn == null)
+        {
+            MessageUtils.sendLocalizedMessage(player, LocalizedMessages.ERROR_SERVER_NOT_SET_UP);
+            return;
+        }
+
 
         player.teleport(Cache.spawn);
 

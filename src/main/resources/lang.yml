@@ -1,5 +1,6 @@
 error:
   console_access: '&eWarning! You are accessing the plugin command from console.'
   console_access_blocked: '&cSorry, but this command is not available via console.'
+  server_not_set_up: '&cThis server has no been set up!'
 info: '&bThis is a colored and localized message!'
 player_position: '&bYour position is: &e%pos%'

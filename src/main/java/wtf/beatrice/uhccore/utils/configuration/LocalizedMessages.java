@@ -7,7 +7,11 @@ public enum LocalizedMessages {
 
     WARNING_CONSOLE_ACCESS("error.console_access"),
 
-    ERROR_CONSOLE_ACCESS_BLOCKED("error.console_access_blocked");
+    ERROR_CONSOLE_ACCESS_BLOCKED("error.console_access_blocked"),
+    ERROR_SERVER_NOT_SET_UP("error.server_not_set_up"),
+
+
+        ;
 
     public String path;
 
