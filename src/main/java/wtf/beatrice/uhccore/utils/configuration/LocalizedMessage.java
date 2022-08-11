@@ -9,6 +9,7 @@ public enum LocalizedMessage {
 
     ERROR_CONSOLE_ACCESS_BLOCKED("error.console_access_blocked"),
     ERROR_SERVER_NOT_SET_UP("error.server_not_set_up"),
+    ERROR_NOT_IN_LOBBY_WORLD("error.not_in_lobby_world"),
 
 
         ;
