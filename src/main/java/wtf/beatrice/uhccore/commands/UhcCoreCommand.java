@@ -16,7 +16,7 @@ import java.util.logging.Level;
 public class UhcCoreCommand implements CommandExecutor
 {
 
-    // Initialize the plugin variable so we can access all of the plugin's data.
+    // Initialize the plugin variable, so we can access all the plugin's data.
     private UhcCore plugin;
 
     // Initialize the debugger so I can debug the plugin.
@@ -46,15 +46,18 @@ public class UhcCoreCommand implements CommandExecutor
         }
 
         // Check if there are any args.
-        if(args.length == 0 || args[0].equalsIgnoreCase("help"))
+        if(args.length == 0)
         {
-            HelpCommand.infoCommand(commandSender, plugin);
         }
         // Check if there is a single argument after the command itself.
         else if (args.length == 1)
         {
-            // Check if the args are "reload" and in case, do it.
-            if(args[0].equalsIgnoreCase("reload"))
+            // Check subcommands.
+            if(args[0].equalsIgnoreCase("help"))
+            {
+                HelpCommand.infoCommand(commandSender, plugin);
+            }
+            else if(args[0].equalsIgnoreCase("reload"))
             {
                 ReloadCommand.reloadCommand(commandSender);
             }
@@ -86,23 +89,10 @@ public class UhcCoreCommand implements CommandExecutor
             }
             else if(args[0].equalsIgnoreCase("start"))
             {
-                StartUhcCommand.startUhcCommand(commandSender, plugin);
+                StartCommand.startUhcCommand(commandSender, plugin);
             }
 
             // TODO: PERMISSIONS! CONFIG!
-
-            // Check if the args are "textcomponent" and run that command.
-            /*else if (args[0].equalsIgnoreCase("textcomponent"))
-            {
-                // We do not want the console to receive the TextComponent, so we're gonna disable it.
-                if(senderIsConsole)
-                {
-                    MessageUtils.sendLocalizedMessage(commandSender.getName(), LocalizedMessages.ERROR_CONSOLE_ACCESS_BLOCKED);
-                    return true;
-                }
-                // Everyone else will be able to run the TextComponent message.
-                TextComponentCommand.textComponentCommand(commandSender);
-            }*/
         }
         return true;
     }

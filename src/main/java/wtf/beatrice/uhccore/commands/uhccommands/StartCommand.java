@@ -12,9 +12,9 @@ import java.util.HashMap;
 import java.util.logging.Level;
 
 
-public class StartUhcCommand {
+public class StartCommand {
 
-    private static Debugger debugger = new Debugger(StartUhcCommand.class.getName());
+    private static Debugger debugger = new Debugger(StartCommand.class.getName());
 
     private static int loadDelay = 10;
 
@@ -47,7 +47,7 @@ public class StartUhcCommand {
 
                 double x = NumberUtils.getRandomNumberInRange(borderX - range + 1, borderX + range - 1) + 0.5;
                 double z = NumberUtils.getRandomNumberInRange(borderZ - range + 1, borderZ + range - 1) + 0.5;
-                int y = spawnWorld.getHighestBlockYAt((int) x, (int) z); // todo: this method is shit, ushe the one i already implemented in Factions...
+                int y = spawnWorld.getHighestBlockYAt((int) x, (int) z); // todo: this method is shit, use the one i already implemented in Factions...
 
                 Location loc = new Location(spawnWorld, x, y + 1, z);
 

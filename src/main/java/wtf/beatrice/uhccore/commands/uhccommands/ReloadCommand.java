@@ -12,11 +12,11 @@ public class ReloadCommand
 
     public static void reloadCommand(CommandSender commandSender)
     {
-        debugger.sendDebugMessage(Level.INFO, "Reloading YAMLS...");
-        commandSender.sendMessage("Reloading YAMLs...");
+        debugger.sendDebugMessage(Level.INFO, "Reloading configuration files...");
+        commandSender.sendMessage("Reloading configuration files...");
         FileUtils.checkFiles();
         FileUtils.reloadYamls();
-        commandSender.sendMessage("Reloaded YAMLs!");
-        debugger.sendDebugMessage(Level.INFO, "Reloaded YAMLs!");
+        commandSender.sendMessage("Reloaded configuration files!");
+        debugger.sendDebugMessage(Level.INFO, "Reloaded configuration files!");
     }
 }
