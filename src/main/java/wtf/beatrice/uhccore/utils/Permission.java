@@ -1,10 +1,10 @@
 package wtf.beatrice.uhccore.utils;
 
-public enum Permissions
+public enum Permission
 {
     TEXTCOMPONENT_COMMAND("pluginname.command.textcomponent");
 
     public String permission;
 
-    Permissions(String permission) { this.permission = permission; }
+    Permission(String permission) { this.permission = permission; }
 }

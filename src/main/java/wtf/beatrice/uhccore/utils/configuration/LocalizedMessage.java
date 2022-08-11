@@ -1,6 +1,6 @@
 package wtf.beatrice.uhccore.utils.configuration;
 
-public enum LocalizedMessages {
+public enum LocalizedMessage {
 
     INFO("info"),
     PLAYER_POSITION("player_position"),
@@ -15,7 +15,7 @@ public enum LocalizedMessages {
 
     public String path;
 
-    LocalizedMessages(String path)
+    LocalizedMessage(String path)
     {
         this.path = path;
     }

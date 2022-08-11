@@ -3,7 +3,7 @@ package wtf.beatrice.uhccore.utils;
 
 import wtf.beatrice.uhccore.UhcCore;
 import wtf.beatrice.uhccore.utils.configuration.FileUtils;
-import wtf.beatrice.uhccore.utils.configuration.LocalizedMessages;
+import wtf.beatrice.uhccore.utils.configuration.LocalizedMessage;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -22,7 +22,7 @@ public class MessageUtils
         MessageUtils.plugin = plugin;
     }
     // Method to automatically load and send a localized message to the CommandSender.
-    public static void sendLocalizedMessage(String senderName, LocalizedMessages messageEnum)
+    public static void sendLocalizedMessage(String senderName, LocalizedMessage messageEnum)
     {
         // We are gonna need to know who to send the message to!
         CommandSender sender;
@@ -39,7 +39,7 @@ public class MessageUtils
         sendLocalizedMessage(sender, messageEnum);
     }
 
-    public static void sendLocalizedMessage(CommandSender sender, LocalizedMessages messageEnum)
+    public static void sendLocalizedMessage(CommandSender sender, LocalizedMessage messageEnum)
     {
 
         // If we actually have a sender, send it the message and color it!
@@ -67,7 +67,7 @@ public class MessageUtils
         else debugger.sendDebugMessage(Level.SEVERE, "Sender is null!");
     }
 
-    public static String getLocalizedMessage(LocalizedMessages messageEnum, boolean applyColor)
+    public static String getLocalizedMessage(LocalizedMessage messageEnum, boolean applyColor)
     {
 
         /*

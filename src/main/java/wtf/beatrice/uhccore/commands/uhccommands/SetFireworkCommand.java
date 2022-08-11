@@ -1,7 +1,7 @@
 package wtf.beatrice.uhccore.commands.uhccommands;
 
 import wtf.beatrice.uhccore.utils.Cache;
-import wtf.beatrice.uhccore.utils.configuration.ConfigEntries;
+import wtf.beatrice.uhccore.utils.configuration.ConfigEntry;
 import wtf.beatrice.uhccore.utils.Debugger;
 import wtf.beatrice.uhccore.utils.configuration.FileUtils;
 import org.bukkit.Location;
@@ -36,7 +36,7 @@ public class SetFireworkCommand
             Cache.fireworksLocations.add(fireworkLoc);
         }
 
-        String currentPath = ConfigEntries.FIREWORK_POS.path + "." + listPos;
+        String currentPath = ConfigEntry.FIREWORK_POS.path + "." + listPos;
 
         config.set(currentPath + ".x", fireworkLoc.getX());
         config.set(currentPath + ".y", fireworkLoc.getY());

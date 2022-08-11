@@ -70,16 +70,16 @@ public class FileUtils
 
         YamlConfiguration config = FileType.CONFIG_YAML.yaml;
 
-        Cache.teamNames = config.getStringList(ConfigEntries.TEAMS_NAMES.path);
-        for(String matName : config.getStringList(ConfigEntries.TEAMS_ITEMS.path))
+        Cache.teamNames = config.getStringList(ConfigEntry.TEAMS_NAMES.path);
+        for(String matName : config.getStringList(ConfigEntry.TEAMS_ITEMS.path))
         {
             Cache.teamItemsMaterials.add(Material.valueOf(matName));
         }
 
-        Cache.uhcWorlds = config.getStringList(ConfigEntries.UHC_WORLDS.path);
-        Cache.lobbyWorlds = config.getStringList(ConfigEntries.LOBBY_WORLDS.path);
+        Cache.uhcWorlds = config.getStringList(ConfigEntry.UHC_WORLDS.path);
+        Cache.lobbyWorlds = config.getStringList(ConfigEntry.LOBBY_WORLDS.path);
 
-        Cache.friendlyFire = config.getBoolean(ConfigEntries.FRIENDLY_FIRE.path);
+        Cache.friendlyFire = config.getBoolean(ConfigEntry.FRIENDLY_FIRE.path);
 
         Cache.teamsItem = new ItemStack(Material.NETHER_STAR);
         ItemMeta im = Cache.teamsItem.getItemMeta();
@@ -91,34 +91,34 @@ public class FileUtils
         im.setDisplayName("§cEsci dal Team");
         Cache.quitTeamItem.setItemMeta(im);
 
-        Cache.totalTeams = config.getInt(ConfigEntries.TEAMS_NUMBER.path);
+        Cache.totalTeams = config.getInt(ConfigEntry.TEAMS_NUMBER.path);
 
         Cache.teamsSelectorGUI = new TeamsSelectorGUI();
         Cache.teamsSelectorGUI.initializeInv();
 
-        Cache.borderX = config.getInt(ConfigEntries.BORDER_CENTER_X.path);
-        Cache.borderZ = config.getInt(ConfigEntries.BORDER_CENTER_Z.path);
-        Cache.borderSize = config.getInt(ConfigEntries.BORDER_SIZE.path);
+        Cache.borderX = config.getInt(ConfigEntry.BORDER_CENTER_X.path);
+        Cache.borderZ = config.getInt(ConfigEntry.BORDER_CENTER_Z.path);
+        Cache.borderSize = config.getInt(ConfigEntry.BORDER_SIZE.path);
 
-        String spawnWorldName = config.getString(ConfigEntries.SPAWN_WORLD.path);
+        String spawnWorldName = config.getString(ConfigEntry.SPAWN_WORLD.path);
         if(spawnWorldName != null)
         {
             World spawnWorld = plugin.getServer().getWorld(spawnWorldName);
 
             if(spawnWorld != null)
             {
-            double x = config.getDouble(ConfigEntries.SPAWN_X.path);
-            double y = config.getDouble(ConfigEntries.SPAWN_Y.path);
-            double z = config.getDouble(ConfigEntries.SPAWN_Z.path);
-            double yaw = config.getDouble(ConfigEntries.SPAWN_YAW.path);
-            double pitch = config.getDouble(ConfigEntries.SPAWN_PITCH.path);
+            double x = config.getDouble(ConfigEntry.SPAWN_X.path);
+            double y = config.getDouble(ConfigEntry.SPAWN_Y.path);
+            double z = config.getDouble(ConfigEntry.SPAWN_Z.path);
+            double yaw = config.getDouble(ConfigEntry.SPAWN_YAW.path);
+            double pitch = config.getDouble(ConfigEntry.SPAWN_PITCH.path);
             Cache.spawn = new Location(spawnWorld, x, y, z, (float) yaw, (float) pitch);
             }
         }
 
-        for(String s : config.getConfigurationSection(ConfigEntries.FIREWORK_POS.path).getKeys(false))
+        for(String s : config.getConfigurationSection(ConfigEntry.FIREWORK_POS.path).getKeys(false))
         {
-            String currentPath = ConfigEntries.FIREWORK_POS.path + "." + s;
+            String currentPath = ConfigEntry.FIREWORK_POS.path + "." + s;
             String world = config.getString(currentPath + ".world");
             double x = config.getDouble(currentPath + ".x");
             double y = config.getDouble(currentPath + ".y");

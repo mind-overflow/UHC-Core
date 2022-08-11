@@ -3,7 +3,7 @@ package wtf.beatrice.uhccore.commands;
 import wtf.beatrice.uhccore.UhcCore;
 import wtf.beatrice.uhccore.utils.Debugger;
 import wtf.beatrice.uhccore.utils.MessageUtils;
-import wtf.beatrice.uhccore.utils.configuration.LocalizedMessages;
+import wtf.beatrice.uhccore.utils.configuration.LocalizedMessage;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -41,7 +41,7 @@ public class UhcCoreCommand implements CommandExecutor
         boolean senderIsConsole = (commandSender instanceof ConsoleCommandSender);
         if(senderIsConsole)
         {
-            MessageUtils.sendLocalizedMessage(commandSender.getName(), LocalizedMessages.WARNING_CONSOLE_ACCESS);
+            MessageUtils.sendLocalizedMessage(commandSender.getName(), LocalizedMessage.WARNING_CONSOLE_ACCESS);
             // Only uncomment the following line if the command should not be able to run this command.
         }
 
@@ -62,7 +62,7 @@ public class UhcCoreCommand implements CommandExecutor
             {
                 if(!(commandSender instanceof Player))
                 {
-                    MessageUtils.sendLocalizedMessage(commandSender.getName(), LocalizedMessages.ERROR_CONSOLE_ACCESS_BLOCKED);
+                    MessageUtils.sendLocalizedMessage(commandSender.getName(), LocalizedMessage.ERROR_CONSOLE_ACCESS_BLOCKED);
                 }
                 else
                 {
@@ -73,7 +73,7 @@ public class UhcCoreCommand implements CommandExecutor
             {
                 if(!(commandSender instanceof Player))
                 {
-                    MessageUtils.sendLocalizedMessage(commandSender.getName(), LocalizedMessages.ERROR_CONSOLE_ACCESS_BLOCKED);
+                    MessageUtils.sendLocalizedMessage(commandSender.getName(), LocalizedMessage.ERROR_CONSOLE_ACCESS_BLOCKED);
                 }
                 else
                 {

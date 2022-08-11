@@ -1,6 +1,6 @@
 package wtf.beatrice.uhccore.utils.configuration;
 
-public enum ConfigEntries
+public enum ConfigEntry
 {
     UHC_WORLDS("settings.uhcworlds"),
 
@@ -29,7 +29,7 @@ public enum ConfigEntries
 
     public String path;
 
-    ConfigEntries(String path)
+    ConfigEntry(String path)
     {
         this.path = path;
     }

@@ -16,7 +16,7 @@ public class PermissionUtils
     public PermissionUtils(UhcCore givenPlugin)  { plugin = givenPlugin;  }
 
     // Method to get the permission string from the Permissions enum.
-    public static boolean playerHasPermission(String username, Permissions permission)
+    public static boolean playerHasPermission(String username, Permission permission)
     {
         debugger.sendDebugMessage(Level.INFO, "Permission: " + permission.permission + "; Player name is: " + username);
         Player user = plugin.getServer().getPlayer(username);
