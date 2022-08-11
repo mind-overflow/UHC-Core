@@ -1,6 +1,6 @@
 name: UHC-Core
 version: 0.0.136
-author: mind_overflow
+author: astro_bea
 api-version: '1.15'
 main: wtf.beatrice.uhccore.UhcCore
 commands:
